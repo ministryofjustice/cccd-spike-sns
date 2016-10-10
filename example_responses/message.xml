@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/">
+    <ReceiveMessageResult>
+        <Message>
+            <MessageId>badb5cbf-8dde-4113-a7d9-198b683c883c</MessageId>
+            <ReceiptHandle>AQEBoBPcMJs7z+oEz6SSbighx3bDuLZz40ONZoM8phwIIhJw2q0AJSJTEgJ4HofBUhC+LOSfKEZYtwjgtwJnDwtt/vDBunDO3Mw+NhPMyw3dnWYcOFP1BUFqxbvybIfsU/DNRzMbj/JOPQKmHoOzAYO6sFVCw3AgwhZz8QO4LTAp8DEIvdBUcKZ5G8P8iLijN8Y7UghQtTroMYs8W6rjPGhLIcErdwElCBcO6GjmiQ8xtbjXHsU/ebUpcfp9Ye+NTCqIoRrTZg54fKOzOhhI/LEOMiLZOLoi6PQp+JoUlnBbUhgvJrSMYbiy58cxALo9pyiePRBGIh9wRNbMJEdmPqFTDowcMOVVje5uRebGAL3jiWbOGzBsF8UnWWj4N8I6Rwcm</ReceiptHandle>
+            <MD5OfBody>4289c480c01d7d0681732e891dbaccf9</MD5OfBody>
+            <Body>{
+                &quot;Type&quot; : &quot;Notification&quot;,
+                &quot;MessageId&quot; : &quot;581ebc51-7800-53bd-99bd-ec24cf801ca3&quot;,
+                &quot;TopicArn&quot; : &quot;arn:aws:sns:eu-west-1:016649511486:cccd-claims&quot;,
+                &quot;Subject&quot; : &quot;Message of 2016-10-10 16:35:28 +0100&quot;,
+                &quot;Message&quot; : &quot;This is our message created by Producer.rb at 2016-10-10 16:35:28 +0100&quot;,
+                &quot;Timestamp&quot; : &quot;2016-10-10T15:35:28.636Z&quot;,
+                &quot;SignatureVersion&quot; : &quot;1&quot;,
+                &quot;Signature&quot; : &quot;XZMca1EWEiEHtRCLgr7ENjdkOle888F7FzHKOwge7Qspj6TOTdJ5M0MzI1Af5xktiTR8Pyo1QnGHlKZA1lVCJuvaF0p7htka2Sl9PWpYmevRcyMiLQdmmkb7RvhOhS6cFnguFo0DfFVOf9BboooJdkmncxT1XBDHoTJ630SaJKjag/Gg5kuXV1JmvPjIkt+GakiCzhM8Ek3y/arAwhclaji7BNSx+Lu5G4UcDhNoh9xlp2ynehYqR7dyCVmAw3W4scnZWrdBXRD6wN4uhUVa93Mi2ehqMHW6+2mSERwr8xK7FI7bfBJw2+qiU/ghEoN3tMZ2SUhNYcjnObgmG6ID+g==&quot;,
+                &quot;SigningCertURL&quot; : &quot;https://sns.eu-west-1.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem&quot;,
+                &quot;UnsubscribeURL&quot; : &quot;https://sns.eu-west-1.amazonaws.com/?Action=Unsubscribe&amp;SubscriptionArn=arn:aws:sns:eu-west-1:016649511486:cccd-claims:d4c97b00-e1c1-4ffd-9ec7-09605f921a2b&quot;
+                }</Body>
+        </Message>
+    </ReceiveMessageResult>
+    <ResponseMetadata>
+        <RequestId>7b93c285-4255-56c0-9133-92f0f5949c1b</RequestId>
+    </ResponseMetadata>
+</ReceiveMessageResponse>
