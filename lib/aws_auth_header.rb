@@ -15,7 +15,6 @@ class AwsAuthHeader
 
   def initialize(http_method, canonical_uri, query_string, payload)
     @credentials = AwsCredential.new
-    # @aws_access_key_id, @aws_secret_access_key = get_credentials
     @utc_now = Time.now.utc
     @amazondate = @utc_now.strftime('%Y%m%dT%H%M%SZ')
     @date_stamp = @utc_now.strftime('%Y%m%d')
