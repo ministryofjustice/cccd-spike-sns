@@ -34,7 +34,7 @@ class HttpConsumer
     query_string = 'Action=ReceiveMessage&Version=2012-11-05'
     uri = URI("#{@endpoint}?#{query_string}")
     begin
-      aws_auth_header = AwsAuthHeader.new('GET', @canonical_uri, query_string, '')
+      aws_auth_header = AwsAuthHeader.new('sqs', 'eu-west-1', 'GET', @canonical_uri, query_string, '')
       response = RestClient.get(uri.to_s, {'Authorization' => aws_auth_header.header, 'x-amz-date' => aws_auth_header.amazondate, 'Host' => aws_auth_header.host })
       hasherize_message(response.body)
     rescue RestClient::Unauthorized, RestClient::Forbidden => e
@@ -50,7 +50,7 @@ class HttpConsumer
     query_string = "Action=DeleteMessage&ReceiptHandle=#{CGI.escape(receipt_handle)}&Version=2012-11-05"
     uri = URI("#{@endpoint}?#{query_string}")
     begin
-      auth_header = AwsAuthHeader.new('GET', @canonical_uri, query_string, '')
+      auth_header = AwsAuthHeader.new('sqs', 'eu-west-1', 'GET', @canonical_uri, query_string, '')
       response = RestClient.get(uri.to_s, {'Authorization' => auth_header.header, 'x-amz-date' => auth_header.amazondate, 'Host' => auth_header.host })
       puts response.body
     rescue RestClient::Unauthorized, RestClient::Forbidden => e

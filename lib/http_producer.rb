@@ -22,7 +22,7 @@ class HttpProducer
     puts payload
 
 
-    aws_auth_header = AwsAuthHeader.new('POST', @canonical_uri, '', payload)
+    aws_auth_header = AwsAuthHeader.new('sqs', 'eu-west-1', 'POST', @canonical_uri, '', payload)
     uri = URI(@endpoint)
     begin
       headers = {
