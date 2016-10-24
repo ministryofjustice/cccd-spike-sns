@@ -8,8 +8,6 @@ class KinesisConsumer
     @endpoint = 'https://kinesis.eu-west-1.amazonaws.com/'
     @canonical_uri = '/'
     @shard_iterator = KinesisShardIterator.new('TRIM_HORIZON').get_iterator
-    puts ">>>>>>>>>>>>>> shard iterator #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-    puts @shard_iterator
     @body_hash = {
       'ShardIterator' => @shard_iterator,
       'Limit' => 25
@@ -39,6 +37,9 @@ class KinesisConsumer
 
       response = RestClient.post(uri.to_s, payload, headers)
       response_hash = JSON.parse(response.body)
+      puts ">>>>>>>>>>>>>> response #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+      ap response_hash
+
       response_hash['Records'].each do |rec|
         rec['Decoded'] = Base64.decode64(rec['Data'])
       end

@@ -26,8 +26,8 @@ class AwsAuthHeader
     payload_hash = Digest::SHA256.hexdigest payload
     canonical_request = "#{http_method}\n#{canonical_uri}\n#{query_string}\n#{@canonical_headers}\n#{signed_headers}\n#{payload_hash}"
 
-    puts ">>>>>>>>>>>>>> CANONICAL REQUEST #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-    ap canonical_request
+    # puts ">>>>>>>>>>>>>> CANONICAL REQUEST #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    # ap canonical_request
 
 
     algorithm = 'AWS4-HMAC-SHA256'
