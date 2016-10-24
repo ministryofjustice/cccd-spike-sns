@@ -28,13 +28,13 @@ class KinesisProducer
         'Host' => aws_auth_header.host,
         'Content-Type' => 'application/x-amz-json-1.1',
         'X-Amz-Target' => 'Kinesis_20131202.PutRecord',
-        'Content-Length' => payload.size.to_s
+        'Content-Length' => payload.to_json.size.to_s
 
       }
       puts ">>>>>>>>>>>>>> headers #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
       ap headers
 
-      response = RestClient.post(uri.to_s, payload, headers)
+      response = RestClient.post(uri.to_s, payload.to_json, headers)
       response_hash = JSON.parse(response.body)
       puts ">>>>>>>>>>>>>> RESPONSE HASH #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
       ap response_hash
@@ -50,16 +50,17 @@ class KinesisProducer
   private
 
   def data_record
-    ">>>> RECORD #{SecureRandom.uuid} CREATED AT #{Time.now.strftime('%Y-%m-%d %H:%M:%S.%L')} <<<<"
+    "RECORD #{SecureRandom.uuid} CREATED AT #{Time.now.strftime('%Y-%m-%d %H:%M:%S.%L')}"
   end
 
   def partition_key
-    SecureRandom.uuid
+    '666'
   end
 
   def payload
     {
-      'Data' => Base64.strict_encode64(data_record),
+      # 'Data' => CGI.escape(Base64.strict_encode64(data_record)),
+      'Data' => Base64.strict_encode64('PSR'),
       'PartitionKey'=> partition_key,
       'StreamName' => 'cccd_claims_local'
     }

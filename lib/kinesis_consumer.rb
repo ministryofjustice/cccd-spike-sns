@@ -60,11 +60,8 @@ class KinesisConsumer
 
 
   def get_records
-    payload = @payload.to_json
-    # puts ">>>>>>>>>>>>>> payload #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-    # puts payload
-
-    aws_auth_header = AwsAuthHeader.new('kinesis', 'eu-west-1', 'POST', @canonical_uri, '', payload)
+    json_payload = @payload.to_json
+    aws_auth_header = AwsAuthHeader.new('kinesis', 'eu-west-1', 'POST', @canonical_uri, '', json_payload)
     uri = URI(@endpoint)
     begin
       headers = {
@@ -73,23 +70,14 @@ class KinesisConsumer
         'Host' => aws_auth_header.host,
         'Content-Type' => 'application/x-amz-json-1.1',
         'X-Amz-Target' => 'Kinesis_20131202.GetRecords',
-        'Content-Length' => payload.size.to_s
+        'Content-Length' => json_payload.size.to_s
 
       }
       # puts ">>>>>>>>>>>>>> headers #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
       # ap headers
 
-      response = RestClient.post(uri.to_s, payload, headers)
-      response_hash = JSON.parse(response.body)
-      # puts ">>>>>>>>>>>>>> response #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-      # ap response_hash
-
-      # response_hash['Records'].each do |rec|
-      #   rec['Decoded'] = Base64.decode64(rec['Data'])
-      # end
-      # puts ">>>>>>>>>>>>>> RESPONSE #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-      # ap response_hash
-      response_hash
+      response = RestClient.post(uri.to_s, json_payload, headers)
+      JSON.parse(response.body)
     rescue => e
       puts "ERROR!!  #{e.class}"
       puts e.response

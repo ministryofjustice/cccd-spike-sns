@@ -26,13 +26,18 @@ class AwsAuthHeader
     payload_hash = Digest::SHA256.hexdigest payload
     canonical_request = "#{http_method}\n#{canonical_uri}\n#{query_string}\n#{@canonical_headers}\n#{signed_headers}\n#{payload_hash}"
 
-    # puts ">>>>>>>>>>>>>> CANONICAL REQUEST #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-    # ap canonical_request
+    puts ">>>>>>>>>>>>>> CANONICAL REQUEST #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    puts canonical_request
 
 
     algorithm = 'AWS4-HMAC-SHA256'
     credential_scope = "#{@date_stamp}/#{region}/#{service}/aws4_request"
     string_to_sign = "#{algorithm}\n#{@amazondate}\n#{credential_scope}\n#{Digest::SHA256.hexdigest(canonical_request)}"
+
+    puts ">>>>>>>>>>>>>> SGTRING TO SIGN #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    puts string_to_sign
+
+
     signing_key = getSignatureKey(@credentials.secret, @date_stamp, region, service)
     signature = OpenSSL::HMAC.hexdigest('sha256', signing_key, string_to_sign)
     @header = "#{algorithm} Credential=#{@credentials.access_key}/#{credential_scope}, SignedHeaders=#{signed_headers}, Signature=#{signature}"
