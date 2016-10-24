@@ -8,15 +8,59 @@ class KinesisConsumer
     @endpoint = 'https://kinesis.eu-west-1.amazonaws.com/'
     @canonical_uri = '/'
     @shard_iterator = KinesisShardIterator.new('TRIM_HORIZON').get_iterator
-    @body_hash = {
+    @payload = {
       'ShardIterator' => @shard_iterator,
       'Limit' => 25
     }
   end
 
 
+  def run
+    response_body_hash = fast_forward_until_records_found
+    puts ">>>>>>>>>>>>>> RESPONSE BODY HASH - FIRST RECORD #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    pp response_body_hash
+
+    while true do
+      publish_records(response_body_hash['Records'])
+      @payload['ShardIterator'] = response_body_hash['NextShardIterator']
+      response_body_hash = get_records
+      puts ">>>>>>>>>>>>>> XXXXXXXXXXXXX #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+      pp response_body_hash
+
+      if response_body_hash['MillisBehindLatest'] == 0 && response_body_hash['Records'].empty?
+        puts ">>>>>>>>>>>>>> UPTO DATE - SLEEPING 30 #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+        sleep 30
+      end
+    end
+  end
+
+  private
+
+  def publish_records(records)
+    puts ">>>>>>>>>>>>>> NUMBER OF RECORDS: #{records.size} #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    records.each do |record|
+      puts Base64.strict_decode64(record['Data'])
+    end
+  end
+
+
+  def fast_forward_until_records_found
+    response_body_hash = get_records
+    puts ">>>>>>>>>>>>>> RESPONSE BODY HASH FAST FORWARD - INITIAL READ #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    pp response_body_hash
+    while response_body_hash['MillisBehindLatest'] > 0 && response_body_hash['Records'].empty?
+      @payload['ShardIterator'] = response_body_hash['NextShardIterator']
+      response_body_hash = get_records
+      # puts ">>>>>>>>>>>>>> RESPONSE BODY HASH #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+      # pp response_body_hash
+    end
+    puts ">>>>>>>>>>>>>> END OF FAST FORWARD #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    response_body_hash
+  end
+
+
   def get_records
-    payload = @body_hash.to_json
+    payload = @payload.to_json
     # puts ">>>>>>>>>>>>>> payload #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
     # puts payload
 
@@ -37,14 +81,14 @@ class KinesisConsumer
 
       response = RestClient.post(uri.to_s, payload, headers)
       response_hash = JSON.parse(response.body)
-      puts ">>>>>>>>>>>>>> response #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-      ap response_hash
+      # puts ">>>>>>>>>>>>>> response #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+      # ap response_hash
 
-      response_hash['Records'].each do |rec|
-        rec['Decoded'] = Base64.decode64(rec['Data'])
-      end
-      puts ">>>>>>>>>>>>>> RESPONSE #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-      ap response_hash
+      # response_hash['Records'].each do |rec|
+      #   rec['Decoded'] = Base64.decode64(rec['Data'])
+      # end
+      # puts ">>>>>>>>>>>>>> RESPONSE #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+      # ap response_hash
       response_hash
     rescue => e
       puts "ERROR!!  #{e.class}"
@@ -54,4 +98,4 @@ class KinesisConsumer
   end
 end
 
-KinesisConsumer.new.get_records
+KinesisConsumer.new.run

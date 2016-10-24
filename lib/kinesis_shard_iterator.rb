@@ -18,22 +18,6 @@ class KinesisShardIterator
     @body_hash = construct_body_hash
   end
 
-  def construct_body_hash
-    body_hash = {
-      'StreamName' => 'cccd_claims_local',
-      'ShardId' => 'shardId-000000000000',
-      'ShardIteratorType' =>  @iterator_type
-    }
-    case @iterator_type
-    when 'AT_SEQUENCE_NUMBER', 'AFTER_SEQUENCE_NUMBER'
-      body_hash['StartingSequenceNumber'] = @iterator_value.to_s
-    when 'AT_TIMESTAMP'
-      body_hash['Timestamp'] = @iterator_value.to_f
-    end
-    body_hash
-  end
-
-
   def get_iterator
     payload = @body_hash.to_json
     aws_auth_header = AwsAuthHeader.new('kinesis', 'eu-west-1', 'POST', @canonical_uri, '', payload)
@@ -48,8 +32,8 @@ class KinesisShardIterator
         'Content-Length' => payload.size.to_s
 
       }
-      puts ">>>>>>>>>>>>>> headers #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-      ap headers
+      # puts ">>>>>>>>>>>>>> headers #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+      # ap headers
 
       response = RestClient.post(uri.to_s, payload, headers)
       JSON.parse(response.body)['ShardIterator']
@@ -58,11 +42,28 @@ class KinesisShardIterator
       puts e.response
       raise e
     end
-
   end
 
+  private
 
+  def construct_body_hash
+    body_hash = {
+      'StreamName' => 'cccd_claims_local',
+      'ShardId' => 'shardId-000000000000',
+      'ShardIteratorType' =>  @iterator_type
+    }
+    case @iterator_type
+    when 'AT_SEQUENCE_NUMBER', 'AFTER_SEQUENCE_NUMBER'
+      body_hash['StartingSequenceNumber'] = @iterator_value.to_s
+    when 'AT_TIMESTAMP'
+      body_hash['Timestamp'] = @iterator_value.to_f
+    end
+    body_hash
+  end
 end
+
+
+
 
 # puts ">>>>>>>>>>>>>> TRIM_HORIZON #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
 # KinesisShardIterator.new('TRIM_HORIZON').get_iterator
