@@ -16,7 +16,8 @@ class KinesisProducer
   end
 
   def run
-    puts ">>>>>>>>>>>>>> payload #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    payload = generate_payload
+    puts ">>>>>>>>>>>>>> PAYLOAD #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
     puts payload
 
     aws_auth_header = AwsAuthHeader.new('kinesis', 'eu-west-1', 'POST', @canonical_uri, '', payload.to_json)
@@ -49,7 +50,7 @@ class KinesisProducer
 
   private
 
-  def data_record
+  def generate_data_record
     "RECORD #{SecureRandom.uuid} CREATED AT #{Time.now.strftime('%Y-%m-%d %H:%M:%S.%L')}"
   end
 
@@ -57,10 +58,12 @@ class KinesisProducer
     '666'
   end
 
-  def payload
+  def generate_payload
+    data_record = generate_data_record
+    puts ">>>>>>>>>>>>>> DATA RECORD #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
+    puts data_record
     {
-      # 'Data' => CGI.escape(Base64.strict_encode64(data_record)),
-      'Data' => Base64.strict_encode64('PSR'),
+      'Data' => CGI.escape(Base64.strict_encode64(data_record)),
       'PartitionKey'=> partition_key,
       'StreamName' => 'cccd_claims_local'
     }
