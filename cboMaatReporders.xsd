@@ -12,32 +12,117 @@
     <!--  ***************************** -->
 		<xs:complexType name="cboMaatRepOrders">
 		<xs:sequence>
-		    <xs:element name="id" type="xs:string" nillable="false"/>
-		    <xs:element name="defID" type="xs:string" nillable="false"/>
-			<xs:element name="arrestSummNo" type="xs:string" nillable="true"/>
-			<xs:element name="efelFeeLevel" type="xs:string" nillable="true"/>
-			<xs:element name="suppAccCd" type="xs:string" nillable="true"/>
-			<xs:element name="macoCourt" type="xs:string" nillable="true"/>
-			<xs:element name="mcooOut" type="xs:string" nillable="true"/>
-			<xs:element name="dateReceived" type="xs:date" nillable="false"/>
-			<xs:element name="ccRODate" type="xs:date" nillable="true"/>
-			<xs:element name="dateCreated" type="xs:dateTime" nillable="false"/>
-			<xs:element name="userCreated" type="xs:string" nillable="false"/>
+		    <xs:element name="id"           type="xs:decimal"  nillable="false"/>
+		    <xs:element name="defID"        type="xs:decimal"  nillable="false"/>
+			<xs:element name="arrestSummNo" type="xs:string"   nillable="true"/>
+			<xs:element name="efelFeeLevel" type="xs:string"   nillable="true"/>
+			<xs:element name="suppAccCd"    type="xs:string"   nillable="true"/>
+			<xs:element name="macoCourt"    type="xs:string"   nillable="true"/>
+			<xs:element name="mcooOut"      type="xs:string"   nillable="true"/>
+			<xs:element name="dateReceived" type="xs:date"     nillable="false"/>
+			<xs:element name="ccRODate"     type="xs:date"     nillable="true"/>
+			<xs:element name="dateCreated"  type="xs:dateTime" nillable="false"/>
+			<xs:element name="userCreated"  type="xs:string"   nillable="false"/>
 			<xs:element name="dateModified" type="xs:dateTime" nillable="true"/>
-			<xs:element name="userModified" type="xs:string" nillable="true"/>
-			<xs:element name="oftyOffType" type="xs:string" nillable="true"/>
-			<xs:element name="ccWithdrawDt" type="xs:date" nillable="true"/>
-			<xs:element name="caseNumb" type="xs:string" nillable="true"/>
-			<xs:element name="commDate" type="xs:date" nillable="true"/>
-			<xs:element name="defhistID" type="xs:string" nillable="true"/>
-			<xs:element name="catycaseType" type="xs:string" nillable="true"/>
-			<xs:element name="rorsStatus" type="xs:string" nillable="true"/>
+			<xs:element name="userModified" type="xs:string"   nillable="true"/>
+			<xs:element name="oftyOffType"  type="xs:string"   nillable="true"/>
+			<xs:element name="ccWithdrawDt" type="xs:date"     nillable="true"/>
+			<xs:element name="caseNumb"     type="xs:string"   nillable="true"/>
+			<xs:element name="commDate"     type="xs:date"     nillable="true"/>
+			<xs:element name="defhistID"    type="xs:decimal"  nillable="true"/>
+			<xs:element name="catycaseType" type="xs:string"   nillable="true"/>
+			<xs:element name="rorsStatus"   type="xs:string"   nillable="true"/>
 		</xs:sequence>
-	</xs:complexType>
+	    </xs:complexType>
 
+  	  <!--  ********************* -->
+  	  <!--  ***  Validation   *** -->
+   	  <!--  ********************* -->
 
+ 	    <!--  Arrest Summons Number -->
+        <xs:simpleType name="arrestSummNo">
+           <xs:restriction base="xs:string">
+               			<xs:maxLength value="20"/>
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  EFEL Fee Level -->
+        <xs:simpleType name="efelFeeLevel">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="20" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Supplier Account Code -->
+        <xs:simpleType name="suppAccCd">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="6"/>
+			   <xs:pattern value="[0-9]{1}[A-Z]{1}[0-9]{3}[A-Z]{1}"/>
+           </xs:restriction>
+        </xs:simpleType>
+        
+	    <!--  Magistrates Court -->
+		<xs:simpleType name="macoCourt">
+		   <xs:restriction base="xs:string">
+		       <xs:maxLength value="50"/>
+		   </xs:restriction>
+	    </xs:simpleType>
+
+	    <!-- Mags Court Outcome Code -->
+	    <xs:simpleType name="mcooOut">
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="50"/>
+            </xs:restriction>
+        </xs:simpleType>
+        
+		<!--  User Created -->
+        <xs:simpleType name="userCreated">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  User Modified -->
+        <xs:simpleType name="userModified">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+		
+        <!--  Offense Type -->
+        <xs:simpleType name="oftyOffType">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Case Number -->
+        <xs:simpleType name="caseNumb">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="20" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Defendant History ID -->
+        <xs:simpleType name="defHistID">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="10" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--   Case Type -->
+        <xs:simpleType name="catycaseType">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
 	
-	
+        <!--   RORS Status -->
+        <xs:simpleType name="rorsStatus">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="20" />
+           </xs:restriction>
+        </xs:simpleType>
 	
 
 
