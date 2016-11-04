@@ -52,3 +52,4 @@ build-iPhoneSimulator/
 
 # Ignore idea stuff
 /.idea
+/.idea/*
