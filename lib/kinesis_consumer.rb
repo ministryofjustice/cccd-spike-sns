@@ -7,7 +7,7 @@ class KinesisConsumer
   def initialize
     @endpoint = 'https://kinesis.eu-west-1.amazonaws.com/'
     @canonical_uri = '/'
-    @shard_iterator = KinesisShardIterator.new('TRIM_HORIZON').get_iterator
+    @shard_iterator = KinesisShardIterator.new('AT_TIMESTAMP', Time.utc(2016, 10, 25, 9, 0, 0)).get_iterator
     @payload = {
       'ShardIterator' => @shard_iterator,
       'Limit' => 25
