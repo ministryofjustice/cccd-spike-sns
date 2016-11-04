@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="claim">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="claim_details" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="case_details" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="defendants"  minOccurs="1" maxOccurs="20"/>
+                <xs:element ref="fees" minOccurs="1" maxOccurs="500"/>
+                <xs:element ref="expenses" minOccurs="1" maxOccurs="500"/>
+                <xs:element ref="disbursements" minOccurs="1" maxOccurs="500"/>
+                <xs:element ref="documents" minOccurs="1" maxOccurs="500"/>
+                <xs:element ref="messages" minOccurs="0" maxOccurs="500"/>
+                <xs:element ref="assessment" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="redeterminations" minOccurs="0" maxOccurs="10"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="claim_details">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="uuid" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="type" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="provider_code" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="advocate_category" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="additional_information" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="apply_vat" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="state" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="submitted_at" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="originally_submitted_at" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="authorised_at" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="created_by" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="external_user" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="provider_code" type="xs:string"/>
+    <xs:element name="advocate_category" type="xs:string"/>
+    <xs:element name="additional_information">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="apply_vat" type="xs:NCName"/>
+    <xs:element name="state" type="xs:NCName"/>
+    <xs:element name="submitted_at" type="xs:NMTOKEN"/>
+    <xs:element name="originally_submitted_at" type="xs:NMTOKEN"/>
+    <xs:element name="authorised_at" type="xs:NMTOKEN"/>
+    <xs:element name="created_by">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="uuid"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="email"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="external_user">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="uuid"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="email"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="case_details">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="case_type"/>
+                <xs:element ref="case_number"/>
+                <xs:element ref="source"/>
+                <xs:element ref="cms_number"/>
+                <xs:element ref="providers_reference"/>
+                <xs:element ref="court"/>
+                <xs:element ref="offence"/>
+                <xs:element ref="trial_dates"/>
+                <xs:element ref="retrial_dates"/>
+                <xs:element ref="cracked_dates"/>
+                <xs:element ref="effective_pcmh_date"/>
+                <xs:element ref="legal_aid_transfer_date"/>
+                <xs:element ref="totals"/>
+                <xs:element ref="evidence_documents"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="case_type" type="xs:NCName"/>
+    <xs:element name="case_number" type="xs:NCName"/>
+    <xs:element name="source" type="xs:NCName"/>
+    <xs:element name="cms_number">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="providers_reference">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="court">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="code"/>
+                <xs:element ref="name"/>
+                <xs:element ref="court_type"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="court_type" type="xs:NCName"/>
+    <xs:element name="offence">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="category"/>
+                <xs:element ref="class"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="category" type="xs:string"/>
+    <xs:element name="class" type="xs:string"/>
+    <xs:element name="trial_dates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="date_started"/>
+                <xs:element ref="date_concluded"/>
+                <xs:element ref="estimated_length"/>
+                <xs:element ref="actual_length"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="retrial_dates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="date_started"/>
+                <xs:element ref="date_concluded"/>
+                <xs:element ref="estimated_length"/>
+                <xs:element ref="actual_length"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cracked_dates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="date_fixed_notice"/>
+                <xs:element ref="date_fixed"/>
+                <xs:element ref="date_cracked"/>
+                <xs:element ref="date_cracked_at_third"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_fixed_notice">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_fixed">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_cracked">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_cracked_at_third">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="effective_pcmh_date">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="legal_aid_transfer_date">
+        <xs:complexType>
+            <xs:attribute name="nil" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="evidence_documents">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="evidence_document"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="evidence_document" type="xs:string"/>
+    <xs:element name="defendants">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="defendant"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="defendant">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="uuid"/>
+                <xs:element ref="first_name"/>
+                <xs:element ref="last_name"/>
+                <xs:element ref="date_of_birth"/>
+                <xs:element ref="representation_orders"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_of_birth" type="xs:NMTOKEN"/>
+    <xs:element name="representation_orders">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="representation_order"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="representation_order">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id"/>
+                <xs:element ref="uuid"/>
+                <xs:element ref="maat_reference"/>
+                <xs:element ref="date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="maat_reference" type="xs:integer"/>
+    <xs:element name="documents">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="document"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="document">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="uuid"/>
+                <xs:element ref="url"/>
+                <xs:element ref="file_name"/>
+                <xs:element ref="size"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="url" type="xs:string"/>
+    <xs:element name="file_name" type="xs:NCName"/>
+    <xs:element name="size" type="xs:integer"/>
+    <xs:element name="messages">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="assessment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="created_at"/>
+                <xs:element ref="totals"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="created_at" type="xs:NMTOKEN"/>
+    <xs:element name="redeterminations">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="uuid">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:pattern value="[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="type" type="xs:anyURI"/>
+    <xs:element name="id" type="xs:integer"/>
+    <xs:element name="first_name" type="xs:NCName"/>
+    <xs:element name="last_name" type="xs:NCName"/>
+    <xs:element name="email" type="xs:string"/>
+    <xs:element name="code" type="xs:NMTOKEN"/>
+    <xs:element name="date_started">
+        <xs:complexType mixed="true">
+            <xs:attribute name="nil" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_concluded">
+        <xs:complexType mixed="true">
+            <xs:attribute name="nil" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="estimated_length" type="xs:integer"/>
+    <xs:element name="actual_length" type="xs:integer"/>
+    <xs:element name="totals">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fees"/>
+                <xs:element ref="expenses"/>
+                <xs:element ref="disbursements"/>
+                <xs:element ref="vat_amount"/>
+                <xs:element ref="total"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="vat_amount" type="xs:decimal"/>
+    <xs:element name="total" type="xs:decimal"/>
+    <xs:element name="date">
+        <xs:complexType mixed="true">
+            <xs:attribute name="nil" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fees">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="fee"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="type"/>
+                <xs:element ref="code"/>
+                <xs:element ref="date"/>
+                <xs:element ref="quantity"/>
+                <xs:element ref="amount"/>
+                <xs:element ref="rate"/>
+                <xs:element ref="dates_attended"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="quantity" type="xs:decimal"/>
+    <xs:element name="amount" type="xs:decimal"/>
+    <xs:element name="rate" type="xs:decimal"/>
+    <xs:element name="dates_attended">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="date_attended"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date_attended">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="from"/>
+                <xs:element ref="to"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="from" type="xs:NMTOKEN"/>
+    <xs:element name="to">
+        <xs:complexType mixed="true">
+            <xs:attribute name="nil" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="expenses" type="xs:string"/>
+    <xs:element name="disbursements" type="xs:string"/>
+</xs:schema>

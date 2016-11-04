@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:cbo="http://www.justice.gov.uk/2016/11/cbo">
+    <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Action soapenv:mustUnderstand="1">newCBOClaimResponse</wsa:Action>
+        <wsa:From soapenv:mustUnderstand="1">
+            <wsa:Address>http://legalaid.gov.uk/infoX/gateway/ccr</wsa:Address>
+        </wsa:From>
+        <wsa:RelatesTo RelationshipType="http://www.w3.org/2005/08/addressing/reply" soapenv:mustUnderstand="1">uuid:668747f7-13c4-4291-8d40-ae66e3cd8f57</wsa:RelatesTo>
+        <wsa:To soapenv:mustUnderstand="1">http://cob.gov.uk/cccd</wsa:To>
+        <wsa:MessageID soapenv:mustUnderstand="1">uuid:18970b31-ab15-45b9-9485-77eb589ed4fc</wsa:MessageID>
+    </soapenv:Header>
+    <soapenv:Body>
+        <cbo:ClaimResponse>
+            <AckId>uuid:66670b31-6666-6666-6666-77eb589ed666</AckId>
+        </cbo:ClaimResponse>
+    </soapenv:Body>
+</soapenv:Envelope>

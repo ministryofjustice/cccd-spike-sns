@@ -29,7 +29,8 @@ class KinesisConsumer
 
       if response_body_hash['MillisBehindLatest'] == 0 && response_body_hash['Records'].empty?
         puts ">>>>>>>>>>>>>> UPTO DATE - SLEEPING 30 #{__FILE__}:#{__LINE__} <<<<<<<<<<<<<<<<<\n"
-        sleep 30
+        sleep 10
+
       end
     end
   end
