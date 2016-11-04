@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  PLACEHOLDER ATTRIBUTES FOR NAMESPACE - CHANGE -->
+<xs:schema
+    elementFormDefault="qualified"  
+	attributeFormDefault="qualified" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+	
+	
+	
+	
+	<!--  ***************************** -->
+    <!--  ***      bill_types       *** -->
+    <!--  ***************************** -->
+		<xs:complexType name="cboBillType">
+		<xs:sequence>
+		    <xs:element name="billType" type="xs:string" nillable="false"/>
+		    <xs:element name="desc" type="xs:string" nillable="false"/>
+			<xs:element name="orderval" type="xs:string" nillable="false"/>
+			<xs:element name="dateCreated" type="xs:dateTime" nillable="false"/>
+			<xs:element name="userCreated" type="xs:string" nillable="false"/>
+			<xs:element name="dateModified" type="xs:dateTime" nillable="true"/>
+			<xs:element name="userModified" type="xs:string" nillable="true"/>
+			<xs:element name="vat" type="xs:string" nillable="false"/>
+			<xs:element name="recoup" type="xs:string" nillable="falsse"/>
+			<xs:element name="appeal" type="xs:string" nillable="flase"/>
+			<xs:element name="autoAuth" type="xs:string" nillable="true"/>
+			<xs:element name="finalBill" type="xs:string" nillable="false"/>
+			<xs:element name="enabled" type="xs:string" nillable="false"/>
+			<xs:element name="autoAuthNum" type="xs:string" nillable="true"/>
+			<xs:element name="sutyBaseType" type="xs:string" nillable="false"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<!--  ********************* -->
+    <!--  ***   Fault       *** -->
+    <!--  ********************* -->
+	
+	<!--  Soap fault - error message container -->
+	<xs:complexType name="cboBillTypeFaultException">
+		<xs:sequence>
+			<xs:element name="MessageCode" nillable="false" type="xs:string"/>
+            <xs:element name="MessageText" nillable="false" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	
+
+	
+
+	
+</xs:schema>

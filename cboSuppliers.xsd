@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  PLACEHOLDER ATTRIBUTES FOR NAMESPACE - CHANGE -->
+<xs:schema
+    elementFormDefault="qualified"  
+	attributeFormDefault="qualified" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+	
+	
+	
+	
+    <!--  ***************************** -->
+    <!--  ***    maat_reporders     *** -->
+    <!--  ***************************** -->
+		<xs:complexType name="cboSuppliers">
+		<xs:sequence>
+		    <xs:element name="accCode"      type="xs:string"    nillable="false"/>
+		    <xs:element name="accName"      type="xs:string"    nillable="false"/>
+			<xs:element name="dateCreated"  type="xs:dateTime"  nillable="false"/>
+			<xs:element name="userCreated"  type="xs:string"    nillable="false"/>
+			<xs:element name="dateModified" type="xs:dateTime"  nillable="true"/>
+			<xs:element name="userModified" type="xs:string"    nillable="true"/>
+			<xs:element name="regiRegion"   type="xs:string"    nillable="true"/>
+			<xs:element name="parent"       type="xs:string"    nillable="true"/>
+			<xs:element name="sutySuppType" type="xs:string"    nillable="false"/>
+			<xs:element name="vatReg "      type="xs:string"    nillable="true"/>
+			<xs:element name="extAcRef"     type="xs:string"    nillable="true"/>
+			<xs:element name="address1"     type="xs:string"    nillable="true"/>
+			<xs:element name="address2"     type="xs:string"    nillable="true"/>
+			<xs:element name="address3"     type="xs:string"    nillable="true"/>
+			<xs:element name="address4"     type="xs:string"    nillable="true"/>
+			<xs:element name="county"       type="xs:string"    nillable="true"/>
+			<xs:element name="postCode"     type="xs:string"    nillable="true"/>
+			<xs:element name="country"      type="xs:string"    nillable="true"/>
+			<xs:element name="highRisk"     type="xs:string"    nillable="true"/>
+			<xs:element name="pstyHigh"     type="xs:string"    nillable="true"/>
+		</xs:sequence>
+	    </xs:complexType>
+
+  	  <!--  ********************* -->
+  	  <!--  ***  Validation   *** -->
+   	  <!--  ********************* -->
+
+ 	    <!--  Supplier Account Code -->
+        <xs:simpleType name="accCode">
+           <xs:restriction base="xs:string">
+               			<xs:maxLength value="6"/>
+			<xs:pattern value="[0-9]{1}[A-Z]{1}[0-9]{3}[A-Z]{1}"/>
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Account Name -->
+        <xs:simpleType name="accName">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+		
+		<!--  User Created -->
+        <xs:simpleType name="userCreated">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  User Modified -->
+        <xs:simpleType name="userModified">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Regi Region -->
+        <xs:simpleType name="regiRegion">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="20" />
+           </xs:restriction>
+        </xs:simpleType>
+        
+	    <!--  Parent -->
+		<xs:simpleType name="parent">
+		   <xs:restriction base="xs:string">
+		       <xs:maxLength value="6"/>
+		   </xs:restriction>
+	    </xs:simpleType>
+
+	    <!-- SUTY Supplier Type -->
+	    <xs:simpleType name="sutySuppType">
+            <xs:restriction base="xs:string">
+                <xs:maxLength value="10"/>
+            </xs:restriction>
+        </xs:simpleType>
+
+        <!--  VAT Registered -->
+        <xs:simpleType name="vatReg">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="1" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  External Account Reference -->
+        <xs:simpleType name="extAcRef">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+		
+		<!--  Address 1 -->
+        <xs:simpleType name="address1">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  Address 2 -->
+        <xs:simpleType name="address2">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  Address 3 -->
+        <xs:simpleType name="address3">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  Address 4 -->
+        <xs:simpleType name="address4">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  County -->
+        <xs:simpleType name="county">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  Post Code -->
+        <xs:simpleType name="postCode">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="15" />
+			   <xs:pattern value="[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][A-Z-[CIKMOV]]{2}"/>
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  Country -->
+        <xs:simpleType name="address1">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="50" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  High Risk -->
+        <xs:simpleType name="highRisk">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="1" />
+           </xs:restriction>
+        </xs:simpleType>
+
+		<!--  PSTY Highest Level -->
+        <xs:simpleType name="pstyHigh">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="10" />
+           </xs:restriction>
+        </xs:simpleType>
+		
+    <!--  ********************* -->
+    <!--  ***   Fault       *** -->
+    <!--  ********************* -->
+	
+	<!--  Soap fault - error message container -->
+	<xs:complexType name="cboSuppFaultException">
+		<xs:sequence>
+			<xs:element name="MessageCode" nillable="false" type="xs:string"/>
+            <xs:element name="MessageText" nillable="false" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	
+
+	
+
+	
+</xs:schema>

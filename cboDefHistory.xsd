@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  PLACEHOLDER ATTRIBUTES FOR NAMESPACE - CHANGE -->
+<xs:schema
+    elementFormDefault="qualified"  
+	attributeFormDefault="qualified" 
+    targetNamespace="http://laa.gov.uk/ccrhubjobs/data/1.0" 
+    xmlns:ns1="http://laa.gov.uk/ccrhubjobs/data/1.0" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+	
+	
+
+	<!--  ***************************** -->
+    <!--  *** defendant_history  *** -->
+    <!--  ***************************** -->
+		<xs:complexType name="cboDefendantHistory">
+		<xs:sequence>
+		    <xs:element name="id"           type="xs:decimal"   nillable="false"/>
+		    <xs:element name="defID"        type="xs:decimal"   nillable="false"/>
+			<xs:element name="firstName"    type="xs:string"    nillable="false"/>
+			<xs:element name="lastName"     type="xs:string"    nillable="false"/>
+			<xs:element name="otherNames"   type="xs:string"    nillable="true"/>
+			<xs:element name="dateOfBirth"  type="xs:date"      nillable="true"/>
+			<xs:element name="gender"       type="xs:string"    nillable="true"/>
+			<xs:element name="nino"         type="ns1:ninoType" nillable="true"/>
+			<xs:element name="foreignID"    type="xs:string"    nillable="true"/>
+			<xs:element name="dateCreated"  type="xs:dateTime"  nillable="false"/>
+			<xs:element name="userCreated"  type="xs:string"    nillable="false"/>
+			<xs:element name="dateModified" type="xs:dateTime"  nillable="true"/>
+			<xs:element name="userModified" type="xs:string"    nillable="true"/>
+			<xs:element name="asAtDate"     type="xs:date"      nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+  	  <!--  ********************* -->
+  	  <!--  ***  Validation   *** -->
+   	  <!--  ********************* -->
+
+
+        <!--  First Name -->
+        <xs:simpleType name="firstName">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="40" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Last Name -->
+        <xs:simpleType name="lastName">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="40" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Other Name -->
+        <xs:simpleType name="otherNames">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="40" />
+           </xs:restriction>
+        </xs:simpleType>
+        
+		<!--  National Insurance Number -->
+		<xs:simpleType name="ninoType">
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="9"/>
+				<xs:pattern value="[a-zA-Z]{2}[0-9]{6}[a-dA-D]?"/>
+			</xs:restriction>
+		</xs:simpleType>
+
+		<!-- Date  format YYCCMMDD -->
+		<xs:simpleType name="LAADOBtype">
+			<xs:restriction base="xs:string">
+					<xs:pattern value="[0-9]{8}"/>
+            </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Gender -->
+        <xs:simpleType name="gender">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="20" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  Foreign ID -->
+        <xs:simpleType name="foreignID">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="20" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  User Created -->
+        <xs:simpleType name="userCreated">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+
+        <!--  User Modified -->
+        <xs:simpleType name="userModified">
+           <xs:restriction base="xs:string">
+               <xs:maxLength value="100" />
+           </xs:restriction>
+        </xs:simpleType>
+
+
+	
+	<!--  ********************* -->
+    <!--  ***   Fault       *** -->
+    <!--  ********************* -->
+	
+	<!--  Soap fault - error message container -->
+	<xs:complexType name="ccrcboFaultException">
+		<xs:sequence>
+			<xs:element name="MessageCode" nillable="false" type="xs:string"/>
+            <xs:element name="MessageText" nillable="false" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	
+
+	
+
+	
+</xs:schema>
