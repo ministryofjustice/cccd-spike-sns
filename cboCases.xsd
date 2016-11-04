@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  PLACEHOLDER ATTRIBUTES FOR NAMESPACE - CHANGE -->
+<xs:schema
+    elementFormDefault="qualified"  
+	attributeFormDefault="qualified" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+	
+	
+	
+	
+    <!--  ***************************** -->
+    <!--  ***        CASES          *** -->
+    <!--  ***************************** -->
+		<xs:complexType name="cboCases">
+		<xs:sequence>
+		    <xs:element name="id"                type="xs:decimal"   nillable="false"/>
+		    <xs:element name="suppAccCode"       type="xs:string"    nillable="false"/>
+			<xs:element name="caseno"            type="xs:string"    nillable="false"/>
+			<xs:element name="ccCode"            type="xs:string"    nillable="false"/>
+			<xs:element name="roDate"            type="xs:date"      nillable="false"/>
+			<xs:element name="roConf"            type="xs:string"    nillable="false"/>
+			<xs:element name="retrial"           type="xs:string"    nillable="false"/>
+			<xs:element name="dateReceived"      type="xs:dateTime"  nillable="false"/>
+			<xs:element name="dateCreated "      type="xs:dateTime"  nillable="false"/>
+			<xs:element name="userCreated"       type="xs:string"    nillable="false"/>
+			<xs:element name="prauProsAuth"      type="xs:string"    nillable="true"/>
+			<xs:element name="roNo"              type="xs:string"    nillable="true"/>
+			<xs:element name="dateModified"      type="xs:dateTime"  nillable="true"/>
+			<xs:element name="userModified"      type="xs:string"    nillable="true"/>
+			<xs:element name="surname"           type="xs:string"    nillable="true"/>
+			<xs:element name="forename"          type="xs:string"    nillable="true"/>
+			<xs:element name="dob"               type="xs:date"      nillable="true"/>
+			<xs:element name="feeStrucID"        type="xs:decimal"   nillable="false"/>
+			<xs:element name="judicialApp"       type="xs:string"    nillable="true"/>
+			<xs:element name="numAdvoc"          type="xs:decimal"   nillable="true"/>			
+			<xs:element name="specClaim"         type="xs:string"    nillable="true"/>
+			<xs:element name="careMatRef"        type="xs:decimal"   nillable="true"/>
+			<xs:element name="ofvbID"            type="xs:decimal"   nillable="true"/>
+			<xs:element name="ofvcID"            type="xs:decimal"   nillable="true"/>
+			<xs:element name="oftyType"          type="xs:string"    nillable="true"/>
+			<xs:element name="oftyTypeExcep"     type="xs:string"    nillable="true"/>
+			<xs:element name="estTrialLeng"      type="xs:decimal"   nillable="false"/>
+			<xs:element name="actTrialLeng"      type="xs:decimal"   nillable="true"/>
+			<xs:element name="trialStartDate"    type="xs:date"      nillable="true"/>
+			<xs:element name="dtNoticeFxwrn"     type="xs:date"      nillable="true"/>
+			<xs:element name="dtFirstFxwrn"      type="xs:date"      nillable="true"/>
+			<xs:element name="dtCrack"           type="xs:date"      nillable="true"/>
+			<xs:element name="thirdCrack"        type="xs:string"    nillable="true"/>
+			<xs:element name="appStatus"         type="xs:string"    nillable="true"/>
+			<xs:element name="highRisk"          type="xs:string"    nillable="true"/>
+			<xs:element name="payWhenAuth"       type="xs:string"    nillable="true"/>
+			<xs:element name="numWitness"        type="xs:decimal"   nillable="false"/>
+			<xs:element name="pstyPerson"        type="xs:string"    nillable="true"/>
+			<xs:element name="excepCirc"         type="xs:string"    nillable="true"/>
+			<xs:element name="excepDesc"         type="xs:string"    nillable="true"/>
+			<xs:element name="appRedRate"        type="xs:string"    nillable="true"/>
+			<xs:element name="codeOrig"          type="xs:string"    nillable="true"/>
+			<xs:element name="caseNoOrig"        type="xs:string"    nillable="true"/>
+			<xs:element name="legacyFee"         type="xs:string"    nillable="true"/>
+			<xs:element name="dtFirstFxwrnOr"    type="xs:date"      nillable="true"/>
+			<xs:element name="parentID"          type="xs:decimal"   nillable="true"/>
+			<xs:element name="indNo"             type="xs:decimal"   nillable="false"/>
+			<xs:element name="vers"              type="xs:decimal"   nillable="false"/>
+			<xs:element name="indNoOrig"         type="xs:decimal"   nillable="true"/>
+			<xs:element name="redetdate"         type="xs:date"      nillable="true"/>
+			<xs:element name="costJudgeDt"       type="xs:date"      nillable="true"/>
+			<xs:element name="vatEffDt"          type="xs:date"      nillable="true"/>
+			<xs:element name="vatRate"           type="xs:decimal"   nillable="true"/>
+			<xs:element name="vatApply"          type="xs:string"    nillable="true"/>
+			<xs:element name="forceTrdCrack"     type="xs:string"    nillable="true"/>
+		</xs:sequence>
+	    </xs:complexType>
+
+  	  <!--  ********************* -->
+  	  <!--  ***  Validation   *** -->
+   	  <!--  ********************* -->
+
+
+
+        <!-- ID -->
+        <xs:element name="id">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!--  Supplier Account Code -->
+        <xs:element name="suppAccCode">	
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+               		<xs:maxLength value="6"/>
+					<xs:pattern value="[0-9]{1}[A-Z]{1}[0-9]{3}[A-Z]{1}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!--  Case Number -->
+		<xs:element name="caseno">	
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+                  <xs:maxLength value="9" />
+				  <xs:pattern value="[A,S,T]{1}[0-9]{8}"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+
+        <!--  Crown Court Code -->
+		<xs:element name="ccCode">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+
+        <!--  Rep Order Date -->
+		<xs:element name="roDate">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        
+        <!--  Rep Order Confirmation -->
+		<xs:element name="roConf">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+        <!--  Retrial -->
+		<xs:element name="retrial">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>	
+
+        <!--  Date Received -->
+		<xs:element name="dateReceived">
+            <xs:simpleType>
+              <xs:restriction base="xs:dateTime">
+					<xs:minInclusive value="2010-01-01T00:00:00"/>
+					<xs:maxInclusive value="2050-12-31T23:59:59"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+        <!--  Date Created -->
+		<xs:element name="dateCreated">
+            <xs:simpleType>
+              <xs:restriction base="xs:dateTime">
+					<xs:minInclusive value="2010-01-01T00:00:00"/>
+					<xs:maxInclusive value="2050-12-31T23:59:59"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+
+        <!--  User Created -->
+		<xs:element name="userCreated">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="100" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+
+        <!--  PRAU PROS AUTH -->
+		<xs:element name="prauProsAuth">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="15" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>	
+
+        <!--  Rep Order number -->
+		<xs:element name="roNo">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>	
+
+        <!--  Date Modified -->
+		<xs:element name="dateModified">
+            <xs:simpleType>
+              <xs:restriction base="xs:dateTime">
+					<xs:minInclusive value="2010-01-01T00:00:00"/>
+					<xs:maxInclusive value="2050-12-31T23:59:59"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>	
+
+        <!--  User Modified-->
+		<xs:element name="userModified">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="100" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>	
+
+        <!--  Surname -->
+		<xs:element name="surname">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="50" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>	
+
+        <!--  Forename -->
+		<xs:element name="forename">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="50" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>	
+
+		<!--  DOB -->
+		<xs:element name="DOB">
+			<xs:simpleType>
+				<xs:restriction base="xs:date">
+					<xs:minInclusive value="1916-01-01"/>
+					<xs:maxInclusive value="2216-12-31"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>		
+
+        <!-- FSTH Fee Structure ID -->
+        <xs:element name="feeStrucID">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!--  Judicial App Applied -->
+		<xs:element name="judicialApp">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+
+        <!-- Number of Advocates -->
+        <xs:element name="numAdvoc">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="3" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>		
+	
+		<!--  Special Claim -->
+		<xs:element name="specClaim">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!-- Care MAAT Ref -->
+        <xs:element name="careMatRef">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- ofvb_ID -->
+        <xs:element name="ofvbID">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- ofcd_ID -->
+        <xs:element name="ofcdID">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- OFTY Offence Type -->
+        <xs:element name="oftyType">	
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- OFTY Offence Type Excep -->
+        <xs:element name="oftyTypeExcep">	
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- estimate trial length -->
+        <xs:element name="estTrialLeng">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- actual trial length -->
+        <xs:element name="actTrialLeng">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!--  Trial Start Date -->
+		<xs:element name="trialStartDate">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		        <!--  Date Notice FXWRN -->
+		<xs:element name="dtNoticeFxwrn">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		        <!--  Date First FXWRN -->
+		<xs:element name="dtFirstFxwrn">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		<!--  Date Crack -->
+		<xs:element name="dtCrack">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		<!--   Third Crack  -->
+		<xs:element name="thirdCrack">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--   CAAS Case Approval Status  -->
+		<xs:element name="appStatus">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--   High Risk  -->
+		<xs:element name="highRisk">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--   Pay When All Bills Authorised  -->
+		<xs:element name="payWhenAuth">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!-- Number of Witnesses -->
+        <xs:element name="numWitness">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="5" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!--   PSTY Person Type  -->
+		<xs:element name="pstyPerson">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--   Exceptional Circumstances  -->
+		<xs:element name="excepCirc">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+
+		<!--   Exceptional Circumstances Description  -->
+		<xs:element name="excepDesc">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="200" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--  Apply Reduced rate  -->
+		<xs:element name="appRedRate">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--   Cour Court Code Orig  -->
+		<xs:element name="codeOrig">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="6" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--   Case No Orig  -->
+		<xs:element name="caseNoOrig">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--  Legacy Fee  Exists -->
+		<xs:element name="legacyFee">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!--  Date First FXWRN Or -->
+		<xs:element name="dtFirstFxwrnOr">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		<!-- parent ID -->
+        <xs:element name="parentID">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- indictment Number -->
+        <xs:element name="indNo">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- version -->
+        <xs:element name="version">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!-- Indictment Number Orig -->
+        <xs:element name="indNoOrig">	
+			<xs:simpleType>
+				<xs:restriction base="xs:decimal">
+					<xs:maxLength value="10" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:element>
+		
+		<!--  Redetermine Date -->
+		<xs:element name="redetdate">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		<!--  Cost Judge Dec Date -->
+		<xs:element name="costJudgeDt">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2010-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		<!--  VAt effective date -->
+		<xs:element name="vatEffDt">
+            <xs:simpleType>
+              <xs:restriction base="xs:date">
+                <xs:minInclusive value="2000-01-01"/>
+                <xs:maxInclusive value="2050-12-31"/>
+              </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+		
+		<!-- VAT Apply  -->
+		<xs:element name="vatApply">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+		
+		<!-- Force Third Crack  -->
+		<xs:element name="forceTrdCrack">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+				  <xs:maxLength value="1" />
+				</xs:restriction>
+			</xs:simpleType>
+        </xs:element>
+
+		
+    <!--  ********************* -->
+    <!--  ***   Fault       *** -->
+    <!--  ********************* -->
+	
+	<!--  Soap fault - error message container -->
+	<xs:complexType name="cboSuppFaultException">
+		<xs:sequence>
+			<xs:element name="MessageCode" nillable="false" type="xs:string"/>
+            <xs:element name="MessageText" nillable="false" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+	
+
+	
+
+	
+</xs:schema>
