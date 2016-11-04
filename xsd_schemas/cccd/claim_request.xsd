@@ -5,14 +5,14 @@
             <xs:sequence>
                 <xs:element ref="claim_details" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="case_details" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="defendants"  minOccurs="1" maxOccurs="20"/>
-                <xs:element ref="fees" minOccurs="1" maxOccurs="500"/>
-                <xs:element ref="expenses" minOccurs="1" maxOccurs="500"/>
-                <xs:element ref="disbursements" minOccurs="1" maxOccurs="500"/>
-                <xs:element ref="documents" minOccurs="1" maxOccurs="500"/>
-                <xs:element ref="messages" minOccurs="0" maxOccurs="500"/>
+                <xs:element ref="defendants"  minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="fees" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="expenses" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="disbursements" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="documents" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="messages" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="assessment" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="redeterminations" minOccurs="0" maxOccurs="10"/>
+                <xs:element ref="redeterminations" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -36,9 +36,7 @@
     </xs:element>
     <xs:element name="provider_code" type="xs:string"/>
     <xs:element name="advocate_category" type="xs:string"/>
-    <xs:element name="additional_information">
-        <xs:complexType/>
-    </xs:element>
+    <xs:element name="additional_information" type="xs:string"/>
     <xs:element name="apply_vat" type="xs:NCName"/>
     <xs:element name="state" type="xs:NCName"/>
     <xs:element name="submitted_at" type="xs:NMTOKEN"/>
@@ -69,24 +67,23 @@
     <xs:element name="case_details">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="case_type"/>
-                <xs:element ref="case_number"/>
-                <xs:element ref="source"/>
+                <xs:element ref="case_type" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="case_number" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="source" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="cms_number"/>
-                <xs:element ref="providers_reference"/>
-                <xs:element ref="court"/>
-                <xs:element ref="offence"/>
+                <xs:element ref="providers_reference" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="court" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="offence" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="trial_dates"/>
                 <xs:element ref="retrial_dates"/>
                 <xs:element ref="cracked_dates"/>
                 <xs:element ref="effective_pcmh_date"/>
                 <xs:element ref="legal_aid_transfer_date"/>
-                <xs:element ref="totals"/>
-                <xs:element ref="evidence_documents"/>
+                <xs:element ref="totals" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="case_type" type="xs:NCName"/>
+    <xs:element name="case_type" type="xs:string"/>
     <xs:element name="case_number" type="xs:NCName"/>
     <xs:element name="source" type="xs:NCName"/>
     <xs:element name="cms_number">
@@ -94,11 +91,7 @@
             <xs:attribute name="nil" use="required" type="xs:NCName"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="providers_reference">
-        <xs:complexType>
-            <xs:attribute name="nil" use="required" type="xs:NCName"/>
-        </xs:complexType>
-    </xs:element>
+    <xs:element name="providers_reference" type="xs:string"/>
     <xs:element name="court">
         <xs:complexType>
             <xs:sequence>
@@ -113,10 +106,7 @@
     <xs:element name="court_type" type="xs:NCName"/>
     <xs:element name="offence">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="category"/>
-                <xs:element ref="class"/>
-            </xs:sequence>
+            <xs:attribute name="nil"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="category" type="xs:string"/>
@@ -181,14 +171,6 @@
             <xs:attribute name="nil" use="required" type="xs:NCName"/>
         </xs:complexType>
     </xs:element>
-    <xs:element name="evidence_documents">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="evidence_document"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="evidence_document" type="xs:string"/>
     <xs:element name="defendants">
         <xs:complexType>
             <xs:sequence>
@@ -230,7 +212,7 @@
     <xs:element name="documents">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="document"/>
+                <xs:element ref="document" minOccurs="0" maxOccurs="50"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -292,11 +274,11 @@
     <xs:element name="totals">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="fees"/>
-                <xs:element ref="expenses"/>
-                <xs:element ref="disbursements"/>
-                <xs:element ref="vat_amount"/>
-                <xs:element ref="total"/>
+                <xs:element name="fees" type="xs:decimal"/>
+                <xs:element name="expenses" type="xs:decimal"/>
+                <xs:element name="disbursements" type="xs:decimal"/>
+                <xs:element name="vat_amount" type="xs:decimal"/>
+                <xs:element name="total" type="xs:decimal"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

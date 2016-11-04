@@ -4,9 +4,7 @@
         <type>Claim::AdvocateClaim</type>
         <provider_code>02EDX</provider_code>
         <advocate_category>Junior alone</advocate_category>
-        <additional_information>
-            Rep Order not yet provided to instructing sols so only details of Rep Order provided.
-        </additional_information>
+        <additional_information>Rep Order</additional_information>
         <apply_vat>true</apply_vat>
         <state>authorised</state>
         <submitted_at>2016-10-05T15:56:47Z</submitted_at>
@@ -67,7 +65,6 @@
             <vat_amount>26.0</vat_amount>
             <total>130.0</total>
         </totals>
-        <evidence_documents/>
     </case_details>
     <defendants>
         <defendant>
