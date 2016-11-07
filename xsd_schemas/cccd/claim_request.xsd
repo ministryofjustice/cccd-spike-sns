@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+
+<xsd:schema xmlns="http://www.justice.gov.uk/2016/11/cbo"
+            xmlns:tns="http://www.justice.gov.uk/2016/11/cbo"
+            targetNamespace="http://www.justice.gov.uk/2016/11/cbo"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" >
+
+
+    <!-- ============================================================================ -->
+    <!-- =====                                                            =========== -->
+    <!-- =====  Operation: New Claim Request and Response                 =========== -->
+    <!-- =====                                                            =========== -->
+    <!-- ============================================================================ -->
+
     <xs:element name="claim">
         <xs:complexType>
             <xs:sequence>

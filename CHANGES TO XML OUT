@@ -1,0 +1,26 @@
+CHANGES TO XML OUTPUT
+
+
+1. top level element is claim_request
+
+2. claim_uuid comes outside claim_details
+
+3. type becomes claim type
+
+4. Change advocate type to one of QC, LEDJR, LEADJR, JRALONE
+
+5. Change apply vat to Y|N instead of true|false
+
+6. Change validation of length of name to 50
+
+7. don't export source
+
+8. nil fields = don't use nil=true, send empty node, or omit
+
+9. change court to court_code and just send that one value
+
+10. replace offence with offence_class (letter only) and offence_description
+
+11. validate effective pcmh date not more than 10 years in past
+
+12. ditto legal aid tranfer date
