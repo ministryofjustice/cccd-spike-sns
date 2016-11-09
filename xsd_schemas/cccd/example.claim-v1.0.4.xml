@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope" xmlns:cbo="http://www.justice.gov.uk/2016/11/cbo">-->
+<!--<soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">-->
+<!--<wsa:Action soapenv:mustUnderstand="1">newCBOClaim</wsa:Action>-->
+<!--<wsa:From soapenv:mustUnderstand="1">-->
+<!--<wsa:Address>http://cob.gov.uk/cccd</wsa:Address>-->
+<!--</wsa:From>-->
+<!--<wsa:MessageID soapenv:mustUnderstand="1">uuid:00d4f639-dfda-49d1-9caf-8343eafdebab</wsa:MessageID>-->
+<!--<wsa:To soapenv:mustUnderstand="1">http://legalaid.gov.uk/infoX/gateway/ccr</wsa:To>-->
+<!--</soapenv:Header>-->
+<!--<soapenv:Body>-->
+<cbo:claim_request xmlns:cbo="http://www.justice.gov.uk/2016/11/cbo">
+    <cbo:claim_uuid>0d9f6fcd-5fc0-4336-b2ea-38b339ba9f05</cbo:claim_uuid>
+    <cbo:claim_details>
+        <cbo:claim_type>Claim::LitigatorClaim</cbo:claim_type>
+        <cbo:supplier_account_code>2M097M</cbo:supplier_account_code>
+        <cbo:additional_information>Please note that 170 pages of photos were served on disk. We have sent these disks to you for our LF1 and AF1 bills</cbo:additional_information>
+        <cbo:apply_vat>Y</cbo:apply_vat>
+        <cbo:state>submitted</cbo:state>
+        <cbo:submitted_at>2016-10-06T14:37:31Z</cbo:submitted_at>
+        <cbo:originally_submitted_at>2016-10-06T14:37:32Z</cbo:originally_submitted_at>
+        <cbo:created_by>
+            <cbo:id>267</cbo:id>
+            <cbo:uuid>3dd51910-e7c5-4651-9079-d8c8baed46bf</cbo:uuid>
+            <cbo:first_name>General</cbo:first_name>
+            <cbo:last_name>Bradtke</cbo:last_name>
+            <cbo:email>362@example.com</cbo:email>
+        </cbo:created_by>
+        <cbo:external_user>
+            <cbo:id>267</cbo:id>
+            <cbo:uuid>3dd51910-e7c5-4651-9079-d8c8baed46bf</cbo:uuid>
+            <cbo:first_name>General</cbo:first_name>
+            <cbo:last_name>Bradtke</cbo:last_name>
+            <cbo:email>362@example.com</cbo:email>
+        </cbo:external_user>
+    </cbo:claim_details>
+    <cbo:case_details>
+        <cbo:case_type>Trial</cbo:case_type>
+        <cbo:case_number>T20167010</cbo:case_number>
+        <cbo:providers_reference>2M097M</cbo:providers_reference>
+        <cbo:court_code>470</cbo:court_code>
+        <cbo:offence>
+            <cbo:category>Rape</cbo:category>
+            <cbo:class>Serious sexual offences, offences against children</cbo:class>
+        </cbo:offence>
+        <cbo:trial_dates>
+            <cbo:estimated_length>0</cbo:estimated_length>
+            <cbo:actual_length>3</cbo:actual_length>
+        </cbo:trial_dates>
+        <cbo:retrial_dates>
+            <cbo:estimated_length>0</cbo:estimated_length>
+            <cbo:actual_length>0</cbo:actual_length>
+        </cbo:retrial_dates>
+        <cbo:cracked_dates>
+        </cbo:cracked_dates>
+    </cbo:case_details>
+    <cbo:defendants>
+        <cbo:defendant>
+            <cbo:representation_orders>
+                <cbo:representation_order>
+                    <cbo:maat_reference>5245033</cbo:maat_reference>
+                    <cbo:date>2016-01-15</cbo:date>
+                </cbo:representation_order>
+                <cbo:representation_order>
+                    <cbo:maat_reference>5489772</cbo:maat_reference>
+                    <cbo:date>2016-08-24</cbo:date>
+                </cbo:representation_order>
+            </cbo:representation_orders>
+        </cbo:defendant>
+    </cbo:defendants>
+    <cbo:fees>
+        <cbo:fee>
+            <cbo:type>Trial</cbo:type>
+            <cbo:code>GTRL</cbo:code>
+            <cbo:date>2016-09-19</cbo:date>
+            <cbo:quantity>373.0</cbo:quantity>
+            <cbo:amount>5140.58</cbo:amount>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:dates_attended/>
+        </cbo:fee>
+    </cbo:fees>
+    <cbo:expenses>
+        <cbo:expense>
+            <cbo:date>2016-01-15</cbo:date>
+            <cbo:type>Car travel</cbo:type>
+            <cbo:location>Bury Mags</cbo:location>
+            <cbo:mileage_rate>45p</cbo:mileage_rate>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>30.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>13.5</cbo:net_amount>
+            <cbo:vat_amount>2.7</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-02</cbo:date>
+            <cbo:type>Car travel</cbo:type>
+            <cbo:location>Bury mags</cbo:location>
+            <cbo:mileage_rate>45p</cbo:mileage_rate>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>30.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>13.5</cbo:net_amount>
+            <cbo:vat_amount>2.7</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-19</cbo:date>
+            <cbo:type>Car travel</cbo:type>
+            <cbo:location>Bolton Crown</cbo:location>
+            <cbo:mileage_rate>45p</cbo:mileage_rate>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>42.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>18.9</cbo:net_amount>
+            <cbo:vat_amount>3.78</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-19</cbo:date>
+            <cbo:type>Parking</cbo:type>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>0.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>5.0</cbo:net_amount>
+            <cbo:vat_amount>0.0</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-20</cbo:date>
+            <cbo:type>Car travel</cbo:type>
+            <cbo:location>Bolton</cbo:location>
+            <cbo:mileage_rate>45p</cbo:mileage_rate>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>42.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>18.9</cbo:net_amount>
+            <cbo:vat_amount>3.78</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-20</cbo:date>
+            <cbo:type>Parking</cbo:type>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>0.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>5.0</cbo:net_amount>
+            <cbo:vat_amount>0.0</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-21</cbo:date>
+            <cbo:type>Car travel</cbo:type>
+            <cbo:location>Bolton Crown</cbo:location>
+            <cbo:mileage_rate>45p</cbo:mileage_rate>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>42.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>18.9</cbo:net_amount>
+            <cbo:vat_amount>3.78</cbo:vat_amount>
+        </cbo:expense>
+        <cbo:expense>
+            <cbo:date>2016-09-21</cbo:date>
+            <cbo:type>Parking</cbo:type>
+            <cbo:reason>Court hearing</cbo:reason>
+            <cbo:distance>0.0</cbo:distance>
+            <cbo:hours>0.0</cbo:hours>
+            <cbo:quantity>0.0</cbo:quantity>
+            <cbo:rate>0.0</cbo:rate>
+            <cbo:net_amount>5.0</cbo:net_amount>
+            <cbo:vat_amount>0.0</cbo:vat_amount>
+        </cbo:expense>
+    </cbo:expenses>
+</cbo:claim_request>
+        <!--</soapenv:Body>-->
+        <!--</soapenv:Envelope>-->
